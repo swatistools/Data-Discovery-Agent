@@ -27,7 +27,7 @@ echo.
 
 :: Start backend API
 echo Starting backend API...
-start /B "DeepAnalyze Backend" cmd /c "python backend.py > logs\backend.log 2>&1"
+start /B "Data Discovery Agent Backend" cmd /c "python backend.py > logs\backend.log 2>&1"
 :: Windows doesn't easily give us the PID of the started background process without external tools or complex PowerShell.
 :: We will rely on port checking or tasklist if needed, but for now simple start is fine.
 echo Backend started in background.
@@ -41,7 +41,7 @@ timeout /t 3 /nobreak >nul
 echo.
 echo Starting React frontend...
 cd frontend
-start /B "DeepAnalyze Frontend" cmd /c "npm run dev -- -p %FRONTEND_PORT% > ..\logs\frontend.log 2>&1"
+start /B "Data Discovery Agent Frontend" cmd /c "npm run dev -- -p %FRONTEND_PORT% > ..\logs\frontend.log 2>&1"
 cd ..
 echo Frontend started in background.
 echo Frontend running on: http://localhost:%FRONTEND_PORT%

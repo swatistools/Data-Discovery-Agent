@@ -11,7 +11,7 @@ import { Toaster } from "@/components/ui/toaster";
 export const metadata: Metadata = {
   title: "Data Discovery Agent",
   description: "Autonomous data discovery, analysis, and policy insight",
-  generator: "DeepAnalyze",
+  generator: "Data Discovery Agent",
 };
 
 export default function RootLayout({

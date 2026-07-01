@@ -16,7 +16,7 @@ call :KillPort %FRONTEND_PORT%
 echo.
 echo Cleaning up remaining processes...
 :: Kill by image name as a fallback
-taskkill /F /IM "python.exe" /FI "WINDOWTITLE eq DeepAnalyze Backend*" >nul 2>&1
+taskkill /F /IM "python.exe" /FI "WINDOWTITLE eq Data Discovery Agent Backend*" >nul 2>&1
 taskkill /F /IM "node.exe" >nul 2>&1
 :: Note: Killing all node.exe might be aggressive if user has other node projects running. 
 :: But filtering by command line arguments is hard in batch. 
