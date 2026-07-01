@@ -1,0 +1,49 @@
+{
+  "cases": [
+    {
+      "case": "iris",
+      "rows": 150,
+      "columns": 5,
+      "duration_sec": 34.51,
+      "generated_code": true,
+      "executed_code": true,
+      "completed_answer": true,
+      "generated_artifacts": 2,
+      "error": "",
+      "output_chars": 46374
+    },
+    {
+      "case": "diabetes",
+      "rows": 442,
+      "columns": 11,
+      "duration_sec": 33.53,
+      "generated_code": true,
+      "executed_code": true,
+      "completed_answer": true,
+      "generated_artifacts": 2,
+      "error": "",
+      "output_chars": 24046
+    },
+    {
+      "case": "breast_cancer",
+      "rows": 569,
+      "columns": 31,
+      "duration_sec": 9.9,
+      "generated_code": true,
+      "executed_code": true,
+      "completed_answer": true,
+      "generated_artifacts": 1,
+      "error": "",
+      "output_chars": 6819
+    }
+  ],
+  "summary": {
+    "total_cases": 3,
+    "completed_workflows": 3,
+    "code_generation_success": 3,
+    "code_execution_success": 3,
+    "answer_completion_success": 3,
+    "total_generated_artifacts": 5,
+    "median_duration_sec": 33.53
+  }
+}

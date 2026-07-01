@@ -120,6 +120,10 @@ These are planned extension areas, not required for the current app flow:
 - Stronger Docker sandboxing and resource limits for generated Python code.
 - Evaluation datasets to test answer quality, code execution reliability, and policy insight usefulness.
 
+## Pilot Evaluation
+
+A preliminary prototype evaluation is included in `evaluation/PILOT_EVALUATION.md`. Across three built-in public benchmark datasets from scikit-learn, the agent completed 3/3 autonomous analysis workflows without manual code editing, generated and executed Python code in 3/3 cases, produced final analytical answers in 3/3 cases, generated five artifacts, and achieved a median runtime of 33.53 seconds.
+
 ## Repository Layout
 
 ```text
@@ -129,6 +133,7 @@ demo/chat_v2/
   Dockerfile.exec   Optional Python execution sandbox image
   .env.example      Runtime configuration template
 docs/SETUP.md       Setup and deployment notes
+evaluation/         Pilot evaluation script and result summary
 requirements.txt    Python dependencies
 ```
 
