@@ -1,0 +1,10 @@
+dataset,task_type,rows,columns,agent_workflow_completed,agent_runtime_sec,metric,agent_value,reference_value,absolute_difference,passed
+iris,classification,150,5,true,5.47,accuracy,0.933,0.9333,0.0003,true
+iris,classification,150,5,true,5.47,f1_macro,0.933,0.9333,0.0003,true
+iris,classification,150,5,true,5.47,error_rate,0.067,0.0667,0.0003,true
+diabetes,regression,442,11,true,9.05,r2,0.4526,0.4526,0.000003,true
+diabetes,regression,442,11,true,9.05,rmse,53.8534,53.8534,0.000046,true
+diabetes,regression,442,11,true,9.05,mae,42.7941,42.7941,0.000005,true
+breast_cancer,classification,569,31,true,4.92,accuracy,0.9825,0.9825,0.0,true
+breast_cancer,classification,569,31,true,4.92,f1_macro,0.9812,0.9812,0.0,true
+breast_cancer,classification,569,31,true,4.92,error_rate,0.0175,0.0175,0.0,true

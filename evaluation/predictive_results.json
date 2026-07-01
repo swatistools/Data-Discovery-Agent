@@ -1,0 +1,61 @@
+{
+  "method": {
+    "purpose": "Predictive benchmark and reference statistical correctness checks for the Data Discovery Agent study.",
+    "note": "These metrics evaluate reference predictive models on the same benchmark datasets. They are not LLM training accuracy.",
+    "random_state": 42,
+    "test_size": 0.2
+  },
+  "cases": [
+    {
+      "dataset": "iris",
+      "task_type": "classification",
+      "rows": 150,
+      "columns": 5,
+      "feature_columns": 4,
+      "target_classes": 3,
+      "test_size": 0.2,
+      "model": "StandardScaler + LogisticRegression",
+      "accuracy": 0.9333,
+      "f1_macro": 0.9333,
+      "f1_weighted": 0.9333,
+      "error_rate": 0.0667
+    },
+    {
+      "dataset": "diabetes",
+      "task_type": "regression",
+      "rows": 442,
+      "columns": 11,
+      "feature_columns": 10,
+      "test_size": 0.2,
+      "model": "StandardScaler + LinearRegression",
+      "r2": 0.4526,
+      "rmse": 53.8534,
+      "mae": 42.7941,
+      "normalized_rmse": 0.3694
+    },
+    {
+      "dataset": "breast_cancer",
+      "task_type": "classification",
+      "rows": 569,
+      "columns": 31,
+      "feature_columns": 30,
+      "target_classes": 2,
+      "test_size": 0.2,
+      "model": "StandardScaler + LogisticRegression",
+      "accuracy": 0.9825,
+      "f1_macro": 0.9812,
+      "f1_weighted": 0.9825,
+      "error_rate": 0.0175
+    }
+  ],
+  "summary": {
+    "classification_cases": 2,
+    "mean_accuracy": 0.9579,
+    "mean_f1_macro": 0.9572,
+    "mean_error_rate": 0.0421,
+    "reference_checks_passed": 9,
+    "reference_checks_total": 9,
+    "statistical_correctness_rate": 1.0,
+    "reference_definition": "Dataset shape and task-type checks against scikit-learn reference metadata."
+  }
+}

@@ -1,0 +1,194 @@
+{
+  "method": {
+    "purpose": "Test whether the real agent loop can generate predictive evaluation code and report metrics matching deterministic reference outputs.",
+    "llm_role": "The LLM generates the Python evaluation code and final metric report; the backend executes the generated code.",
+    "tolerance": 0.001
+  },
+  "cases": [
+    {
+      "dataset": "iris",
+      "duration_sec": 5.47,
+      "error": "",
+      "reported_metrics": {
+        "dataset": "iris.csv",
+        "task_type": "classification",
+        "model": "LogisticRegression",
+        "accuracy": 0.933,
+        "f1_macro": 0.933,
+        "f1_weighted": 0.933,
+        "error_rate": 0.067
+      },
+      "json_found": true,
+      "generated_code": true,
+      "executed_code": true,
+      "completed_answer": true,
+      "output_chars": 3075,
+      "reference_metrics": {
+        "dataset": "iris",
+        "task_type": "classification",
+        "rows": 150,
+        "columns": 5,
+        "feature_columns": 4,
+        "target_classes": 3,
+        "test_size": 0.2,
+        "model": "StandardScaler + LogisticRegression",
+        "accuracy": 0.9333,
+        "f1_macro": 0.9333,
+        "f1_weighted": 0.9333,
+        "error_rate": 0.0667
+      },
+      "metric_checks": [
+        {
+          "metric": "accuracy",
+          "passed": true,
+          "reported": 0.933,
+          "reference": 0.9333,
+          "absolute_difference": 0.0003
+        },
+        {
+          "metric": "f1_macro",
+          "passed": true,
+          "reported": 0.933,
+          "reference": 0.9333,
+          "absolute_difference": 0.0003
+        },
+        {
+          "metric": "error_rate",
+          "passed": true,
+          "reported": 0.067,
+          "reference": 0.0667,
+          "absolute_difference": 0.0003
+        }
+      ],
+      "metrics_passed": 3,
+      "metrics_total": 3,
+      "all_metrics_matched": true
+    },
+    {
+      "dataset": "diabetes",
+      "duration_sec": 9.05,
+      "error": "",
+      "reported_metrics": {
+        "dataset": "diabetes.csv",
+        "task_type": "regression",
+        "model": "LinearRegression",
+        "r2": 0.4526027629719189,
+        "rmse": 53.85344583676596,
+        "mae": 42.79409467959996,
+        "normalized_rmse": 0.3694278310060251
+      },
+      "json_found": true,
+      "generated_code": true,
+      "executed_code": true,
+      "completed_answer": true,
+      "output_chars": 6165,
+      "reference_metrics": {
+        "dataset": "diabetes",
+        "task_type": "regression",
+        "rows": 442,
+        "columns": 11,
+        "feature_columns": 10,
+        "test_size": 0.2,
+        "model": "StandardScaler + LinearRegression",
+        "r2": 0.4526,
+        "rmse": 53.8534,
+        "mae": 42.7941,
+        "normalized_rmse": 0.3694
+      },
+      "metric_checks": [
+        {
+          "metric": "r2",
+          "passed": true,
+          "reported": 0.4526,
+          "reference": 0.4526,
+          "absolute_difference": 3e-06
+        },
+        {
+          "metric": "rmse",
+          "passed": true,
+          "reported": 53.8534,
+          "reference": 53.8534,
+          "absolute_difference": 4.6e-05
+        },
+        {
+          "metric": "mae",
+          "passed": true,
+          "reported": 42.7941,
+          "reference": 42.7941,
+          "absolute_difference": 5e-06
+        }
+      ],
+      "metrics_passed": 3,
+      "metrics_total": 3,
+      "all_metrics_matched": true
+    },
+    {
+      "dataset": "breast_cancer",
+      "duration_sec": 4.92,
+      "error": "",
+      "reported_metrics": {
+        "dataset": "breast_cancer.csv",
+        "task_type": "classification",
+        "model": "LogisticRegression",
+        "accuracy": 0.9825,
+        "f1_macro": 0.9812,
+        "f1_weighted": 0.9825,
+        "error_rate": 0.0175
+      },
+      "json_found": true,
+      "generated_code": true,
+      "executed_code": true,
+      "completed_answer": true,
+      "output_chars": 3239,
+      "reference_metrics": {
+        "dataset": "breast_cancer",
+        "task_type": "classification",
+        "rows": 569,
+        "columns": 31,
+        "feature_columns": 30,
+        "target_classes": 2,
+        "test_size": 0.2,
+        "model": "StandardScaler + LogisticRegression",
+        "accuracy": 0.9825,
+        "f1_macro": 0.9812,
+        "f1_weighted": 0.9825,
+        "error_rate": 0.0175
+      },
+      "metric_checks": [
+        {
+          "metric": "accuracy",
+          "passed": true,
+          "reported": 0.9825,
+          "reference": 0.9825,
+          "absolute_difference": 0.0
+        },
+        {
+          "metric": "f1_macro",
+          "passed": true,
+          "reported": 0.9812,
+          "reference": 0.9812,
+          "absolute_difference": 0.0
+        },
+        {
+          "metric": "error_rate",
+          "passed": true,
+          "reported": 0.0175,
+          "reference": 0.0175,
+          "absolute_difference": 0.0
+        }
+      ],
+      "metrics_passed": 3,
+      "metrics_total": 3,
+      "all_metrics_matched": true
+    }
+  ],
+  "summary": {
+    "total_cases": 3,
+    "completed_agent_workflows": 3,
+    "json_metric_reports_found": 3,
+    "metric_checks_passed": 9,
+    "metric_checks_total": 9,
+    "metric_correctness_rate": 1.0,
+    "all_case_metrics_matched": 3
+  }
+}
