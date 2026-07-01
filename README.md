@@ -105,6 +105,21 @@ DEEPANALYZE_MODEL_PATH=your-local-model-name
 
 For local models, use the UI's custom model option if you want to enter model name, base URL, and API key from the browser.
 
+## Future Upgrades
+
+These are planned extension areas, not required for the current app flow:
+
+- RAG over policy documents, reports, PDFs, and internal knowledge bases.
+- Citations and evidence tracking for generated findings and recommendations.
+- Saved projects, analysis history, and reusable workspaces.
+- User authentication, roles, and private file storage.
+- Report templates for policy briefs, executive summaries, and data quality audits.
+- Scheduled analysis jobs for recurring datasets.
+- Database connectors for Postgres, MySQL, BigQuery, Snowflake, and APIs.
+- Optional local/self-hosted LLM deployment for offline or private environments.
+- Stronger Docker sandboxing and resource limits for generated Python code.
+- Evaluation datasets to test answer quality, code execution reliability, and policy insight usefulness.
+
 ## Repository Layout
 
 ```text

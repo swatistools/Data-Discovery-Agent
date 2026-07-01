@@ -63,3 +63,15 @@ docker build -t deepanalyze-chat-exec:latest -f Dockerfile.exec .
 - duplicate frontend lockfile
 
 The app flow remains: upload data, generate analysis code, execute Python, return results, and continue through chat.
+
+## Future Upgrade Paths
+
+- Add RAG for policy documents, PDFs, reports, and internal knowledge bases.
+- Add citations so reports show which uploaded files or document passages support each insight.
+- Add saved projects and analysis history.
+- Add authentication and private file storage.
+- Add report templates for policy briefs, executive summaries, and data quality audits.
+- Add scheduled analysis jobs for recurring datasets.
+- Add database/API connectors.
+- Add local/self-hosted LLM deployment profiles.
+- Harden Docker execution with stricter CPU, memory, timeout, and filesystem limits.
