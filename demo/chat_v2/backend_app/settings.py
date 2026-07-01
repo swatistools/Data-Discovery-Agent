@@ -61,8 +61,15 @@ IMAGE_EXTENSIONS = {".png", ".jpg", ".jpeg", ".gif", ".webp", ".svg"}
 
 @dataclass(frozen=True)
 class Settings:
-    api_base: str = os.getenv("DEEPANALYZE_API_BASE", "http://localhost:8000/v1")
-    model_path: str = os.getenv("DEEPANALYZE_MODEL_PATH", "DeepAnalyze-8B")
+    api_base: str = os.getenv("LLM_BASE_URL") or os.getenv(
+        "DEEPANALYZE_API_BASE",
+        "https://api.groq.com/openai/v1",
+    )
+    api_key: str = os.getenv("GROQ_API_KEY") or os.getenv("OPENAI_API_KEY", "")
+    model_path: str = os.getenv("GROQ_MODEL") or os.getenv(
+        "DEEPANALYZE_MODEL_PATH",
+        "llama-3.3-70b-versatile",
+    )
     workspace_base_dir: str = os.getenv("DEEPANALYZE_WORKSPACE_BASE", "workspace")
     http_server_host: str = os.getenv("DEEPANALYZE_FILE_SERVER_HOST", "localhost")
     http_server_port: int = int(os.getenv("DEEPANALYZE_FILE_SERVER_PORT", "8100"))

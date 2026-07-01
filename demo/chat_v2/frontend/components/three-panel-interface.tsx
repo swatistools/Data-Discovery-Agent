@@ -205,7 +205,7 @@ const STREAMING_SECTION_FIXED_HEIGHT_PX = 140;
 const UPLOAD_ACCEPT_TYPES =
   ".csv,.tsv,.xlsx,.xls,.parquet,.sqlite,.db,.json,.txt,.log,.md,.markdown,.yml,.yaml,.pdf,image/*,.zip";
 type LlmProvider = "local" | "heywhale" | "custom";
-const DEFAULT_MODEL_NAME = "DeepAnalyze-8B";
+const DEFAULT_MODEL_NAME = "llama-3.3-70b-versatile";
 const EXECUTE_RESULT_PREFIX = "# Execute Result\n";
 const EXECUTE_RESULT_NOTICE_EN =
   "Code execution feedback will be returned as a user message starting with `# Execute Result\\n`.";
@@ -215,7 +215,7 @@ const isDeepAnalyzeModelName = (modelName: string) =>
   /deep[\s\-_]*analyze/i.test(String(modelName || "").trim());
 const CUSTOM_MODEL_SYSTEM_PREFIX_EN = `# Role
 
-You are an intelligent agent designed for **data analysis** scenarios. Your goal is to follow user instructions, continuously **analyze**, **write executable code**, and **understand the data based on the output**, ultimately producing high-quality **answers**. Each time you output, you decide the next action on your own.
+You are an intelligent agent designed for **autonomous data discovery, analysis, and policy insight** scenarios. Your goal is to follow user instructions, continuously **analyze**, **write executable code**, and **understand the data based on the output**, ultimately producing high-quality **answers** with evidence-backed findings, policy implications, recommendations, and limitations. Each time you output, you decide the next action on your own.
 
 ---
 
@@ -988,7 +988,7 @@ export function ThreePanelInterface() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "welcome-1",
-      content: "Hello! I'm DeepAnalyze-8B, your autonomous data science assistant. Upload your data and let's explore it together!",
+      content: "Hello! I'm Policy Insight Analyst, your autonomous data discovery and policy insight assistant. Upload your data and I'll start from discovery, evidence, and recommendations.",
       sender: "ai",
       timestamp: new Date(),
       localOnly: true,
@@ -1263,7 +1263,7 @@ export function ThreePanelInterface() {
     }
     const welcome: Message = {
       id: `welcome-${Date.now()}`,
-      content: "Hello! I'm DeepAnalyze-8B, your autonomous data science assistant. Upload your data and let's explore it together!",
+      content: "Hello! I'm Policy Insight Analyst, your autonomous data discovery and policy insight assistant. Upload your data and I'll start from discovery, evidence, and recommendations.",
       sender: "ai",
       timestamp: new Date(),
       localOnly: true,
@@ -1441,14 +1441,14 @@ export function ThreePanelInterface() {
       emptySystemPrompt:
         uiLanguage === "zh" ? "默认留空" : "Default empty",
       modelProvider: uiLanguage === "zh" ? "模型来源" : "Model Provider",
-      providerLocal: uiLanguage === "zh" ? "本地" : "Local",
+      providerLocal: uiLanguage === "zh" ? "Groq 默认" : "Groq Default",
       providerHeywhale: uiLanguage === "zh" ? "和鲸 API" : "HeyWhale API",
       providerCustom: uiLanguage === "zh" ? "自定义模型" : "Custom Model",
       modelName: uiLanguage === "zh" ? "模型名称" : "Model Name",
       modelNamePlaceholder:
         uiLanguage === "zh"
-          ? "例如：DeepAnalyze-8B 或 gpt-4o-mini"
-          : "For example: DeepAnalyze-8B or gpt-4o-mini",
+          ? "例如：llama-3.3-70b-versatile 或本地模型名称"
+          : "For example: llama-3.3-70b-versatile or a local model name",
       temperature: uiLanguage === "zh" ? "温度" : "Temperature",
       temperatureHint:
         uiLanguage === "zh"

@@ -12,9 +12,48 @@ export interface PromptPreset {
   prompt: LocalizedText;
 }
 
-export const DEFAULT_SYSTEM_PROMPT = "";
+export const POLICY_INSIGHT_PROMPT = `Act as an autonomous data discovery, analysis, and policy insight analyst.
+
+After files are uploaded, inspect the dataset before asking for more input. Profile columns, data types, missing values, anomalies, trends, group differences, and limitations. Generate useful charts or tables when they help. Then write concise policy-relevant findings, implications, recommendations, and caveats grounded only in the uploaded data.`;
+
+export const DEFAULT_SYSTEM_PROMPT = `# Role
+
+You are an autonomous data discovery, analysis, and policy insight analyst. Start by understanding the uploaded data, then run analysis and generate evidence-backed policy insights. Do not invent facts that are not supported by the data.
+
+## Required workflow
+
+- Inspect schema, columns, data types, missing values, anomalies, and likely policy-relevant dimensions first.
+- Write complete standalone Python code when analysis is needed.
+- Generate charts or tables when they clarify evidence.
+- End with concise findings, policy implications, recommendations, and limitations grounded only in the uploaded data.
+
+## Output format
+
+Use these XML-style tags exactly:
+
+- <Analyze>...</Analyze>
+- <Code>...</Code>
+- <Understand>...</Understand>
+- <Answer>...</Answer>
+
+After outputting </Code>, stop. The system will execute the code and return the result.`;
 
 export const DATA_ANALYSIS_PROMPT_PRESETS: PromptPreset[] = [
+  {
+    id: "policy-insight",
+    label: {
+      en: "Policy Insight",
+      zh: "政策洞察",
+    },
+    description: {
+      en: "Autonomously discover data quality, trends, gaps, implications, and recommendations.",
+      zh: "自动发现数据质量、趋势、差距、政策含义与建议。",
+    },
+    prompt: {
+      en: POLICY_INSIGHT_PROMPT,
+      zh: "请作为自主数据发现、分析和政策洞察分析师工作。上传文件后，先检查数据集，再分析字段、类型、缺失值、异常、趋势、群体差异和限制。必要时生成图表或表格。最后只基于上传数据写出简洁的政策相关发现、含义、建议和注意事项。",
+    },
+  },
   {
     id: "eda",
     label: {

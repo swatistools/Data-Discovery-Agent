@@ -27,7 +27,7 @@ from .workspace import (
 from ..settings import CHINESE_MATPLOTLIB_BOOTSTRAP, settings
 
 
-client = openai.OpenAI(base_url=settings.api_base, api_key="dummy")
+client = openai.OpenAI(base_url=settings.api_base, api_key=settings.api_key or "dummy")
 _STOP_EVENTS: dict[str, threading.Event] = {}
 _STOP_EVENTS_LOCK = threading.Lock()
 HEYWHALE_API_BASE = (
@@ -38,7 +38,10 @@ HEYWHALE_BACKUP_CHAT_COMPLETIONS_URL = (
 )
 REMOTE_STOP_SEQUENCES = ["</Code>", "</Answer>"]
 EXECUTE_RESULT_PREFIX = "# Execute Result\n"
-FIXED_MODEL_NAME = "DeepAnalyze-8B"
+FIXED_MODEL_NAME = settings.model_path
+POLICY_INSIGHT_SYSTEM_PROMPT = """You are an autonomous data discovery, analysis, and policy insight analyst. Start by understanding the uploaded data, then run analysis and generate evidence-backed policy insights. Do not invent facts that are not supported by the data.
+
+Use these XML-style tags exactly: <Analyze>, <Code>, <Understand>, and <Answer>. After outputting </Code>, stop so the system can execute the code and return the result."""
 STRUCTURED_TAG_NAMES = ("Analyze", "Understand", "Code", "Execute", "Answer", "File")
 STRUCTURED_OPEN_TAGS = tuple(f"<{tag}>" for tag in STRUCTURED_TAG_NAMES)
 STRUCTURED_TAG_PATTERN = "|".join(STRUCTURED_TAG_NAMES)
@@ -236,16 +239,23 @@ def _iter_local_stream(
     conversation: list[dict[str, Any]],
     runtime_config: ChatRuntimeConfig,
 ):
-    response = client.chat.completions.create(
-        model=runtime_config.model,
-        messages=conversation,
-        temperature=runtime_config.temperature,
-        stream=True,
-        extra_body={
+    request_kwargs: dict[str, Any] = {
+        "model": runtime_config.model,
+        "messages": conversation,
+        "temperature": runtime_config.temperature,
+        "stream": True,
+    }
+    if _is_deepanalyze_model(runtime_config.model):
+        request_kwargs["extra_body"] = {
             "add_generation_prompt": False,
             "stop_token_ids": [151676, 151645],
             "max_new_tokens": 32768,
-        },
+        }
+    else:
+        request_kwargs["stop"] = REMOTE_STOP_SEQUENCES
+
+    response = client.chat.completions.create(
+        **request_kwargs,
     )
     try:
         for chunk in response:
@@ -441,6 +451,8 @@ def bot_stream(
 
     if conversation and conversation[0].get("role") == "assistant":
         conversation = conversation[1:]
+    if not any(str(message.get("role") or "").lower() == "system" for message in conversation):
+        conversation.insert(0, {"role": "system", "content": POLICY_INSIGHT_SYSTEM_PROMPT})
 
     _build_user_prompt(conversation, workspace_paths, workspace_dir)
 

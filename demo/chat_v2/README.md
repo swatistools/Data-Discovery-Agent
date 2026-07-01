@@ -1,6 +1,6 @@
 # Chat Demo
 
-`demo/chat_v2` is the browser-based DeepAnalyze demo. It includes the backend API, the workspace/file layer, the frontend UI, and both local and Docker execution modes.
+`demo/chat_v2` is the browser-based DeepAnalyze demo. This fork configures it as Policy Insight Analyst: an autonomous data discovery, analysis, and policy insight app that uses Groq by default instead of requiring a local GPU model.
 
 [Chinese Version](./README_ZH.md)
 
@@ -13,15 +13,15 @@
 - Export Markdown and PDF reports
 - Switch between Chinese and English UI
 - Run code either locally or inside Docker
-- Choose model provider: Local, HeyWhale API, or Custom OpenAI-compatible API
+- Choose model provider: Groq default, HeyWhale API, or Custom OpenAI-compatible API
 
 ## Model Provider Settings
 
 In the left configuration panel:
 
-- `Local`: uses your local DeepAnalyze-compatible endpoint.
+- `Groq Default`: uses the backend `LLM_BASE_URL`, `GROQ_API_KEY`, and `GROQ_MODEL` settings. The default base URL is `https://api.groq.com/openai/v1`.
 - `HeyWhale API`: requires `API Key`; API base uses the built-in HeyWhale endpoint by default.
-- `Custom Model`: requires your own `Model Name` and `API Base`; `API Key` is optional.
+- `Custom Model`: requires your own `Model Name` and `API Base`; `API Key` is optional. Use this for local OpenAI-compatible servers such as Ollama, vLLM, or LM Studio.
 
 When provider is `Custom Model`, the frontend automatically prepends a structured data-analysis system prefix:
 
@@ -34,13 +34,15 @@ For local or HeyWhale DeepAnalyze usage, this extra prefix is not injected.
 
 ### 1. Model service
 
-Start a DeepAnalyze model service first, for example:
+The default setup uses Groq, so no local GPU, local LLM, or vLLM server is required.
 
-```bash
-vllm serve DeepAnalyze-8B
+```env
+GROQ_API_KEY=your_key_here
+GROQ_MODEL=llama-3.3-70b-versatile
+LLM_BASE_URL=https://api.groq.com/openai/v1
 ```
 
-By default the chat demo connects to an OpenAI-compatible endpoint around `http://localhost:8000`.
+You can still use a local LLM if it exposes an OpenAI-compatible API. For example, point `LLM_BASE_URL` at an Ollama, vLLM, or LM Studio `/v1` endpoint and set the model name to your local model.
 
 ### 2. Python and Node.js
 

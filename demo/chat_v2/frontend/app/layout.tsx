@@ -9,9 +9,9 @@ import { Suspense } from "react";
 import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
-  title: "v0 App",
-  description: "Created with v0",
-  generator: "v0.app",
+  title: "Policy Insight Analyst",
+  description: "Autonomous data discovery, analysis, and policy insight",
+  generator: "DeepAnalyze",
 };
 
 export default function RootLayout({
