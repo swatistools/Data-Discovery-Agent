@@ -12,9 +12,9 @@
 
 [![twitter](https://img.shields.io/badge/@Brian%20Roemmele-gray?logo=x&logoColor=white&labelColor=black)](https://x.com/BrianRoemmele/status/1981015483823571352) [![twitter](https://img.shields.io/badge/@Dr%20Singularity-gray?logo=x&logoColor=white&labelColor=black)](https://x.com/Dr_Singularity/status/1981010771338498241) [![twitter](https://img.shields.io/badge/@Gorden%20Sun-gray?logo=x&logoColor=white&labelColor=black)](https://x.com/Gorden_Sun/status/1980573407386423408) [![twitter](https://img.shields.io/badge/@AIGCLINK-gray?logo=x&logoColor=white&labelColor=black)](https://x.com/aigclink/status/1980554517126246642) [![twitter](https://img.shields.io/badge/@Python%20Developer-gray?logo=x&logoColor=white&labelColor=black)](https://x.com/Python_Dv/status/1980667557318377871) [![twitter](https://img.shields.io/badge/@meng%20shao-gray?logo=x&logoColor=white&labelColor=black)](https://x.com/shao__meng/status/1980623242114314531) 
 
-## Policy Insight Analyst Fork
+## Data Discovery Agent Fork
 
-This fork modifies DeepAnalyze WebUI v2 into an autonomous data discovery, analysis, and policy insight app. The default model provider is Groq through the OpenAI-compatible API, so the app does not require a local GPU, local LLM, or vLLM server for the standard setup.
+This fork modifies DeepAnalyze WebUI v2 into Data Discovery Agent: an autonomous data discovery, analysis, and policy insight app. The default model provider is Groq through the OpenAI-compatible API, so the app does not require a local GPU, local LLM, or vLLM server for the standard setup.
 
 Required default environment:
 

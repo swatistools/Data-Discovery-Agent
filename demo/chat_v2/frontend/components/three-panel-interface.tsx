@@ -988,7 +988,7 @@ export function ThreePanelInterface() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "welcome-1",
-      content: "Hello! I'm Policy Insight Analyst, your autonomous data discovery and policy insight assistant. Upload your data and I'll start from discovery, evidence, and recommendations.",
+      content: "Hello! I'm Data Discovery Agent, your autonomous data discovery and policy insight assistant. Upload your data and I'll start from discovery, evidence, and recommendations.",
       sender: "ai",
       timestamp: new Date(),
       localOnly: true,
@@ -1263,7 +1263,7 @@ export function ThreePanelInterface() {
     }
     const welcome: Message = {
       id: `welcome-${Date.now()}`,
-      content: "Hello! I'm Policy Insight Analyst, your autonomous data discovery and policy insight assistant. Upload your data and I'll start from discovery, evidence, and recommendations.",
+      content: "Hello! I'm Data Discovery Agent, your autonomous data discovery and policy insight assistant. Upload your data and I'll start from discovery, evidence, and recommendations.",
       sender: "ai",
       timestamp: new Date(),
       localOnly: true,

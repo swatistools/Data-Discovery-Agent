@@ -9,7 +9,7 @@ import { Suspense } from "react";
 import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
-  title: "Policy Insight Analyst",
+  title: "Data Discovery Agent",
   description: "Autonomous data discovery, analysis, and policy insight",
   generator: "DeepAnalyze",
 };

@@ -1,6 +1,6 @@
 # Chat Demo
 
-`demo/chat_v2` is the browser-based DeepAnalyze demo. This fork configures it as Policy Insight Analyst: an autonomous data discovery, analysis, and policy insight app that uses Groq by default instead of requiring a local GPU model.
+`demo/chat_v2` is the browser-based DeepAnalyze demo. This fork configures it as Data Discovery Agent: an autonomous data discovery, analysis, and policy insight app that uses Groq by default instead of requiring a local GPU model.
 
 [Chinese Version](./README_ZH.md)
 
